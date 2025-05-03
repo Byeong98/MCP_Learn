@@ -46,3 +46,11 @@ print(result)
 """
 # 도시 이름과 온도 출력 
 print(f"{result['name']}의 온도는 : {result['main']['temp']}") 
+
+# httpx data type 확인
+import httpx 
+api:str = f"http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={apiKey}&lang={lang}&units={units}"
+response = httpx.Client().get(api)
+data = response.json()
+print(response.json())
+print(type(data)) # dict

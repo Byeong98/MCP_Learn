@@ -18,16 +18,16 @@ async def get_weather(location:str) -> dict:
     api:str = f"http://api.openweathermap.org/data/2.5/weather?q={location}&APPID={apiKey}&lang={lang}&units={units}"
     async with httpx.AsyncClient() as client:
         response = await client.get(api)
-        return await weather_forecast_prompt(response)
+        return await weather_forecast_prompt(response.json())
     
 
 @mcp.prompt()
 async def weather_forecast_prompt(forecast:dict) -> str:
     return f"""
-        {forecast['name']}의 예보:
-
-        현재 온도: {forecast['main']['temp']} °C 
-        체감 온도: {forecast["main"]["feels_like"]} °C 
+        {forecast['name']}의 날씨: \n
+        현재 온도: {forecast['main']['temp']} °C \n
+        체감 온도: {forecast["main"]["feels_like"]} °C \n
+        입니다.
         """
 
 if __name__ == "__main__":
