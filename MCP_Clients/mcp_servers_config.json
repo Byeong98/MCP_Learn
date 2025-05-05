@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+        "weather": {
+            "command": "/Users/gimbyeongmin/.local/bin/uv",
+            "args": [
+                "--directory",
+                "/Users/gimbyeongmin/desktop/project/MCP_learn/MCP_Server",
+                "run",
+                "weather.py"
+            ]
+        }
+    }
+}
+
